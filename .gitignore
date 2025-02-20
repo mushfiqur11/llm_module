@@ -1,0 +1,4 @@
+*.egg-info
+hf_models/
+config.json
+*/config.json

@@ -46,12 +46,20 @@ class OpenAILLM:
         Returns:
             Optional[str]: Generated response text.
         """
-        print(conversation)
-        chat_completion = self.model.chat.completions.create(
-            messages=conversation,
-            model=self.model_name,
-        )
-        return chat_completion.choices[0].message.content.strip()
+        # print(conversation)
+        if "response_format" in kwargs:
+            chat_completion = self.model.beta.chat.completions.parse(
+                messages=conversation,
+                model=self.model_name,
+                response_format=kwargs["response_format"]
+            )
+            return chat_completion.choices[0].message.parsed
+        else:
+            chat_completion = self.model.chat.completions.create(
+                messages=conversation,
+                model=self.model_name,
+            )
+            return chat_completion.choices[0].message.content.strip()
         # # Set parameters, mapping from your original configuration.
         # temperature = kwargs.get("temperature", 0.7)
         # top_p = kwargs.get("top_p", 0.1)

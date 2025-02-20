@@ -1,5 +1,5 @@
 import argparse
-from llm_run import llm_run
+from llm_modules.llm_run import llm_run
 
 def main(args):
     model_input = [
@@ -15,10 +15,10 @@ if __name__ == '__main__':
     parser.add_argument('--dataset', default='toxicity')
     parser.add_argument('--language', default='english')
     
-    # parser.add_argument('--model_id', default='microsoft/Phi-3-mini-4k-instruct')
-    parser.add_argument('--model_id', default='gpt-3.5-turbo')
+    parser.add_argument('--model_id', default='microsoft/Phi-3-mini-4k-instruct')
+    # parser.add_argument('--model_id', default='gpt-3.5-turbo')
     # parser.add_argument('--model_id', default='unsloth/DeepSeek-R1-GGUF')
-    parser.add_argument('--hf_model_path', default='./../../hf_models')
+    parser.add_argument('--hf_model_path', default='./../../tone_adjustment/hf_models')
     parser.add_argument('--model_save_path', default='./../../hf_models/saved')
     parser.add_argument('--single', type=bool, default=True)
 
