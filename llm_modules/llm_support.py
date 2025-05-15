@@ -5,6 +5,7 @@ from huggingface_hub import snapshot_download
 from datasets import Dataset
 # import wandb
 from transformers import BitsAndBytesConfig
+import torch
 
 class LLM:
     """

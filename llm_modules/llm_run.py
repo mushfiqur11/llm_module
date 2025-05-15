@@ -13,8 +13,22 @@ model_lookup_table = {
     'meta-llama/Llama-3.2-1B-Instruct': 'hf-llm',
     'meta-llama/Llama-3.2-3B': 'hf-llm',
     'meta-llama/Llama-3.2-3B-Instruct': 'hf-llm',
+    'meta-llama/Llama-3.3-70B-Instruct': 'hf-llm',
     'CohereForAI/aya-expanse-8b': 'hf-llm',
     'Qwen/Qwen2.5-VL-7B-Instruct': 'hf-llm',
+
+    'Qwen/Qwen3-4B': 'hf-llm',
+    'Qwen/Qwen3-8B': 'hf-llm',
+    'Qwen/Qwen3-32B': 'hf-llm',
+    'Qwen/Qwen3-0.6B': 'hf-llm',
+
+    'microsoft/Phi-4-reasoning-plus': 'hf-llm',
+    'microsoft/phi-4': 'hf-llm',
+
+    'deepseek-ai/DeepSeek-R1-Distill-Llama-70B': 'hf-llm',
+    'deepseek-ai/DeepSeek-R1-Distill-Qwen-32B': 'hf-llm',
+    'deepseek-ai/DeepSeek-R1-Distill-Qwen-14B': 'hf-llm',
+
     
     'gpt-3.5-turbo': 'openai-llm',
     'o3-mini': 'openai-llm',
@@ -49,8 +63,8 @@ def llm_ready(args):
         return llm
     
     elif model_type == 'hf-llm':
-        # from .llm_support import LLM
-        from .llm_support_multigpu import LLM
+        from .llm_support import LLM
+        # from .llm_support_multigpu import LLM
         os.environ["HF_HOME"] = "./.cache"
         os.environ["TORCH_HOME"] = "./.cache"
 
